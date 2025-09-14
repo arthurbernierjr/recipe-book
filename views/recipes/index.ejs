@@ -1,0 +1,12 @@
+<%- include('../layouts/layout') %>
+
+<h2>All Recipes</h2>
+<ul>
+  <% recipes.forEach(recipe => { %>
+    <li>
+      <a href="/recipes/<%= recipe._id %>">
+        <strong><%= recipe.name %></strong> - <%= recipe.cuisine %> (<%= recipe.type %>)
+      </a>
+    </li>
+  <% }) %>
+</ul>

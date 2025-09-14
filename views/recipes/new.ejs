@@ -1,0 +1,37 @@
+<%- include('../layouts/layout') %>
+
+<h2>New Recipe</h2>
+<form action="/recipes" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" required><br>
+
+  <label for="type">Type:</label>
+  <select name="type" id="type">
+    <option value="Food">Food</option>
+    <option value="Drink">Drink</option>
+  </select><br>
+
+  <label for="cuisine">Cuisine:</label>
+  <select name="cuisine" id="cuisine">
+    <option value="Italian">Italian</option>
+    <option value="Puerto Rican">Puerto Rican</option>
+  </select><br>
+
+  <label for="ingredients">Ingredients (comma-separated):</label>
+  <textarea name="ingredients" id="ingredients"></textarea><br>
+
+  <label for="instructions">Instructions:</label>
+  <textarea name="instructions" id="instructions" required></textarea><br>
+
+  <label for="difficulty">Difficulty:</label>
+  <select name="difficulty" id="difficulty">
+    <option value="Easy">Easy</option>
+    <option value="Medium" selected>Medium</option>
+    <option value="Hard">Hard</option>
+  </select><br>
+
+  <label for="imageUrl">Image URL:</label>
+  <input type="text" name="imageUrl" id="imageUrl"><br>
+
+  <button type="submit">Create</button>
+</form>

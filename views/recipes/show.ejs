@@ -1,0 +1,27 @@
+<%- include('../layouts/layout') %>
+
+<h2><%= recipe.name %></h2>
+<p><strong>Cuisine:</strong> <%= recipe.cuisine %></p>
+<p><strong>Type:</strong> <%= recipe.type %></p>
+<p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
+
+<% if (recipe.imageUrl) { %>
+  <img src="<%= recipe.imageUrl %>" alt="<%= recipe.name %>" style="max-width:300px;">
+<% } %>
+
+<h3>Ingredients:</h3>
+<ul>
+  <% recipe.ingredients.forEach(ing => { %>
+    <li><%= ing %></li>
+  <% }) %>
+</ul>
+
+<h3>Instructions:</h3>
+<p><%= recipe.instructions %></p>
+
+<a href="/recipes/<%= recipe._id %>/edit">✏️ Edit</a>
+<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+  <button type="submit">🗑 Delete</button>
+</form>
+
+<a href="/recipes">⬅ Back</a>

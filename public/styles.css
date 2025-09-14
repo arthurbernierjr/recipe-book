@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+a {
+  color: darkred;
+  text-decoration: none;
+}
+
+button {
+  background: darkred;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
