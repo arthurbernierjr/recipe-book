@@ -1,37 +1,44 @@
-<%- include('../layouts/layout') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Edit Recipe</h1>
+    </header>
+    <div class="container">
+        <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" value="<%= recipe.name %>" required>
 
-<h2>Edit Recipe</h2>
-<form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
-  <label>Name:</label>
-  <input type="text" name="name" value="<%= recipe.name %>" required><br>
+            <label>Cuisine:</label>
+            <input type="text" name="cuisine" value="<%= recipe.cuisine %>" required>
 
-  <label for="type">Type:</label>
-  <select id="type" name="type">
-    <option value="Food" <%= recipe.type === 'Food' ? 'selected' : '' %>>Food</option>
-    <option value="Drink" <%= recipe.type === 'Drink' ? 'selected' : '' %>>Drink</option>
-  </select><br>
+            <label>Type:</label>
+            <select name="type" required>
+                <option value="Food" <%= recipe.type === 'Food' ? 'selected' : '' %>>Food</option>
+                <option value="Drink" <%= recipe.type === 'Drink' ? 'selected' : '' %>>Drink</option>
+            </select>
 
-  <label for="cuisine">Cuisine:</label>
-  <select id="cuisine" name="cuisine">
-    <option value="Italian" <%= recipe.cuisine === 'Italian' ? 'selected' : '' %>>Italian</option>
-    <option value="Puerto Rican" <%= recipe.cuisine === 'Puerto Rican' ? 'selected' : '' %>>Puerto Rican</option>
-  </select><br>
+            <label>Ingredients (comma separated):</label>
+            <input type="text" name="ingredients" value="<%= recipe.ingredients.join(', ') %>" required>
 
-  <label>Ingredients (comma-separated):</label>
-  <textarea name="ingredients"><%= recipe.ingredients.join(', ') %></textarea><br>
+            <label>Instructions:</label>
+            <textarea name="instructions" rows="4" required><%= recipe.instructions %></textarea>
 
-  <label>Instructions:</label>
-  <textarea name="instructions" required><%= recipe.instructions %></textarea><br>
+            <label>Difficulty:</label>
+            <select name="difficulty" required>
+                <option value="Easy" <%= recipe.difficulty === 'Easy' ? 'selected' : '' %>>Easy</option>
+                <option value="Medium" <%= recipe.difficulty === 'Medium' ? 'selected' : '' %>>Medium</option>
+                <option value="Hard" <%= recipe.difficulty === 'Hard' ? 'selected' : '' %>>Hard</option>
+            </select>
 
-  <label>Difficulty:</label>
-  <select name="difficulty">
-    <option value="Easy" <%= recipe.difficulty === 'Easy' ? 'selected' : '' %>>Easy</option>
-    <option value="Medium" <%= recipe.difficulty === 'Medium' ? 'selected' : '' %>>Medium</option>
-    <option value="Hard" <%= recipe.difficulty === 'Hard' ? 'selected' : '' %>>Hard</option>
-  </select><br>
-
-  <label for="imageUrl">Image URL:</label>
-  <input type="text" id="imageUrl" name="imageUrl" value="<%= recipe.imageUrl %>"><br>
-
-  <button type="submit">Update</button>
-</form>
+            <button type="submit" class="button">Update Recipe</button>
+        </form>
+        <a href="/recipes/<%= recipe._id %>" class="button">Cancel</a>
+    </div>
+</body>
+</html>
