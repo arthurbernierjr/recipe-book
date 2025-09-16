@@ -4,9 +4,16 @@ const Recipe = require('../models/recipe');
 
 // INDEX
 router.get('/', async (req, res) => {
-  const recipes = await Recipe.find();
-  res.render('recipes/index', { recipes });
+  try {
+    const recipes = await Recipe.find();
+    console.log("📊 Recipes fetched:", recipes);  // 👈 Debug log for Render
+    res.render('recipes/index', { recipes });
+  } catch (err) {
+    console.error("❌ Error fetching recipes:", err);
+    res.status(500).send("Error loading recipes");
+  }
 });
+
 
 // NEW
 router.get('/new', (req, res) => {
