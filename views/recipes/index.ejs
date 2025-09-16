@@ -12,16 +12,29 @@
     <div class="container">
         <a href="/recipes/new" class="button">Add New Recipe</a>
 
-        <% recipes.forEach(recipe => { %>
-            <div class="recipe-card">
-                <h2><%= recipe.name %></h2>
-                <p><strong>Cuisine:</strong> <%= recipe.cuisine %></p>
-                <p><strong>Type:</strong> <%= recipe.type %></p>
-                <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
-                <a href="/recipes/<%= recipe._id %>" class="button">View</a>
-                <a href="/recipes/<%= recipe._id %>/edit" class="button">Edit</a>
-            </div>
-        <% }) %>
+        <% if (recipes.length === 0) { %>
+            <p>No recipes found. Add some delicious dishes or drinks! 🍝🍹</p>
+        <% } else { %>
+            <% recipes.forEach(recipe => { %>
+                <div class="recipe-card">
+                    <h2><%= recipe.name %></h2>
+                    <p><strong>Cuisine:</strong> <%= recipe.cuisine || 'N/A' %></p>
+                    <p><strong>Type:</strong> <%= recipe.type || 'Food/Drink' %></p>
+                    <p><strong>Difficulty:</strong> <%= recipe.difficulty || 'Easy' %></p>
+                    <% if (recipe.ingredients && recipe.ingredients.length) { %>
+                        <p><strong>Ingredients:</strong> <%= recipe.ingredients.join(', ') %></p>
+                    <% } %>
+                    <% if (recipe.instructions) { %>
+                        <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
+                    <% } %>
+                    <a href="/recipes/<%= recipe._id %>" class="button">View</a>
+                    <a href="/recipes/<%= recipe._id %>/edit" class="button">Edit</a>
+                    <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            <% }) %>
+        <% } %>
     </div>
 </body>
 </html>
