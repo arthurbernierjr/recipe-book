@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/thefallxo96/recipe-book#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.2",
     "method-override": "^3.0.0",
     "mongodb": "^6.19.0",
     "mongoose": "^8.18.1"

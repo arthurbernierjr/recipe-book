@@ -57,3 +57,14 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
+
+function requireLogin(req, res, next) {
+    if (!req.session.userId) {
+        return res.redirect('/login');
+    }
+    next();
+}
+
+// Example: apply to all recipe routes
+router.use(requireLogin);

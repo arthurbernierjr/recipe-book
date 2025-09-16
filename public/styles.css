@@ -16,21 +16,34 @@ header {
     width: 90%;
     max-width: 1000px;
     margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
+/* Card */
 .recipe-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 1rem;
-    margin-bottom: 1rem;
     background-color: #fff;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    width: 250px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Hover effect */
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Title */
 .recipe-card h2 {
     margin-top: 0;
 }
 
+/* Buttons */
 a.button {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -43,4 +56,13 @@ a.button {
 
 a.button:hover {
     background-color: #ff3b2f;
+}
+
+/* Food vs Drink colors */
+.recipe-card[data-type="Drink"] {
+    background-color: #d0f0fd; /* Light blue for drinks */
+}
+
+.recipe-card[data-type="Food"] {
+    background-color: #fff3d0; /* Light yellow for foods */
 }
