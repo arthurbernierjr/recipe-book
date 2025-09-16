@@ -10,6 +10,10 @@ I built this app to combine my love for cooking with learning full-stack develop
 
 Technologies Used..
 
+Auth: Express-session (basic authentication)
+
+Deployment: Render
+
 Backend: Node.js, Express
 
 Database: MongoDB Atlas, Mongoose
@@ -24,12 +28,12 @@ Recipe inspiration: Personal culinary knowledge & public recipe sources
 
 Next Steps / Stretch Goals
 
-Add user authentication so multiple users can save their own recipes
+✅ Improve UI with better styling / responsive design
 
-Enable recipe categories and filtering (e.g., Drinks, Foods, Italian, Puerto Rican)
+✅ Add password hashing for better security
 
-Add search functionality by recipe name or ingredient
+✅ Add ability to upload images for recipes
 
-Improve styling with Bootstrap or TailwindCSS for a more polished UI
+✅ Add user-specific recipe collections (so users only see their recipes)
 
-Deploy a mobile-responsive version for tablets and smartphones
+✅ Implement search & filtering (e.g., by cuisine or difficulty)
