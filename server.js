@@ -1,4 +1,5 @@
 require('dotenv').config();
+console.log("🔑 MONGODB_URI from env:", process.env.MONGODB_URI);
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
