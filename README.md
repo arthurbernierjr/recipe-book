@@ -23,8 +23,8 @@ Recipe Book is designed to organize and manage your favorite recipes all in one 
 
 ## 🚀 Getting Started
 
-🔗 **Live App:** [Deployed on Render](https://your-render-url.onrender.com)  
-📋 **Planning Materials:** [Trello / Planning Board](https://link-to-your-planning-board.com)
+🔗 **Live App:** [Deployed on Render](https://recipe-book-3ejc.onrender.com/recipes)  
+📋 **Planning Materials:** [Trello / Planning Board](https://trello.com/c/RoTGiOOK/8-untitledpng)
 
 ### Running Locally
 1. Clone the repo:
