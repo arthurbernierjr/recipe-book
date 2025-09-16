@@ -2,27 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><%= recipe.name %></title>
+    <title><%= recipe.name %> - Recipe Book</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <header>
         <h1><%= recipe.name %></h1>
     </header>
+
     <div class="container">
         <p><strong>Cuisine:</strong> <%= recipe.cuisine %></p>
         <p><strong>Type:</strong> <%= recipe.type %></p>
         <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
-        <p><strong>Ingredients:</strong> <%= recipe.ingredients.join(', ') %></p>
-        <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
+        <p><strong>Ingredients:</strong></p>
+        <ul>
+            <% recipe.ingredients.forEach(ingredient => { %>
+                <li><%= ingredient %></li>
+            <% }) %>
+        </ul>
 
-        <a href="/recipes/<%= recipe._id %>/edit" class="button">Edit</a>
+        <p><strong>Instructions:</strong></p>
+        <p><%= recipe.instructions %></p>
 
-        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
-            <button type="submit" class="button">Delete</button>
-        </form>
+        <% if (userId) { %>
+            <a href="/recipes/<%= recipe._id %>/edit" class="button">Edit</a>
+            <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="button">Delete</button>
+            </form>
+        <% } %>
 
-        <a href="/recipes" class="button">Back to Recipes</a>
+        <p><a href="/recipes" class="button">Back to Recipes</a></p>
     </div>
 </body>
 </html>

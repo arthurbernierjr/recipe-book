@@ -1,13 +1,9 @@
 require('dotenv').config();
-console.log("🔑 MONGODB_URI from env:", process.env.MONGODB_URI);
-
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const session = require('express-session');
-
-const authController = require('./controllers/auth');
-const recipesController = require('./controllers/recipes');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,29 +12,43 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Session middleware (must come BEFORE routes that use sessions)
+// Session setup
 app.use(session({
-    secret: 'yourSuperSecretKey', // change this!
+    secret: process.env.SESSION_SECRET || 'superSecretKey123',
     resave: false,
     saveUninitialized: true
 }));
 
-// Auth routes (login/register)
-app.use('/', authController);
+// Make userId available in EJS templates
+app.use((req, res, next) => {
+    res.locals.userId = req.session.userId || null;
+    next();
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+    .then(() => console.log('✅ Connected to MongoDB'))
+    .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// Recipe routes
+// Routes
+const authController = require('./controllers/auth');
+const recipesController = require('./controllers/recipes');
+
+app.use('/', authController);
 app.use('/recipes', recipesController);
 
 // Root route
-app.get('/', (req, res) => res.redirect('/recipes'));
+app.get('/', (req, res) => {
+    if (req.session.userId) {
+        res.redirect('/recipes');
+    } else {
+        res.redirect('/login');
+    }
+});
 
+// Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

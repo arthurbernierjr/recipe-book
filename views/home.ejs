@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Book</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Recipe Book</h1>
+    </header>
+
+    <div class="container">
+        <% if (!userId) { %>
+            <!-- Show login/register if user is not logged in -->
+            <a href="/login" class="button">Login</a>
+            <a href="/register" class="button">Register</a>
+        <% } else { %>
+            <!-- Show recipes/logout if user is logged in -->
+            <a href="/recipes" class="button">Go to Recipes</a>
+            <a href="/logout" class="button">Logout</a>
+        <% } %>
+
+        <p style="margin-top: 1rem;">
+            Discover Italian & Puerto Rican recipes, plus adult drinks! Add your favorites and keep track of all your culinary creations.
+        </p>
+    </div>
+</body>
+</html>

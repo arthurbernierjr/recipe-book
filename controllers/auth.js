@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/users');
+const User = require('../models/user');
 
 // Show register form
 router.get('/register', (req, res) => res.render('auth/register'));
@@ -12,10 +12,10 @@ router.post('/register', async (req, res) => {
         const user = new User({ email, password });
         await user.save();
         req.session.userId = user._id;
-        res.redirect('/recipes');
+        res.redirect('/'); // Redirect to home page after register
     } catch (err) {
-        console.error('❌ Registration error:', err);
-        res.status(500).send('Error registering user');
+        console.error(err);
+        res.send('Error registering user');
     }
 });
 
@@ -31,18 +31,17 @@ router.post('/login', async (req, res) => {
             return res.send('Invalid credentials');
         }
         req.session.userId = user._id;
-        res.redirect('/recipes');
+        res.redirect('/'); // Redirect to home page after login
     } catch (err) {
-        console.error('❌ Login error:', err);
-        res.status(500).send('Error logging in');
+        console.error(err);
+        res.send('Error logging in');
     }
 });
 
 // Logout
 router.get('/logout', (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/login');
-    });
+    req.session.destroy();
+    res.redirect('/'); // Redirect to home page after logout
 });
 
 module.exports = router;

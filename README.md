@@ -5,19 +5,20 @@ Includes authentication (register/login), database storage, and a clean, user-fr
 
 ---
 
-## 📸 Screenshot
+Screenshot
 ![Recipe Book Screenshot](<Screenshot 2025-09-14 at 10.24.49 PM.png>)
 
 ---
 
 ## 📝 Description
+
 Recipe Book is designed to organize and manage your favorite recipes all in one place.  
 
 **Why I built it:**  
-- To practice full-stack development with the **MERN stack** (MongoDB, Express, Node, EJS for templating)  
-- Implement CRUD operations with a database backend  
-- Add authentication for user-specific data  
-- Deploy a full-stack application for real-world experience
+To practice full-stack development with the ERN stack (MongoDB, Express, Node, EJS for templating)  
+Implement CRUD operations with a database backend  
+Add authentication for user-specific data  
+Deploy a full-stack application for real-world experience
 
 ---
 
@@ -26,10 +27,10 @@ Recipe Book is designed to organize and manage your favorite recipes all in one 
 🔗 **Live App:** [Deployed on Render](https://recipe-book-3ejc.onrender.com/recipes)  
 📋 **Planning Materials:** [Trello / Planning Board](https://trello.com/c/RoTGiOOK/8-untitledpng)
 
-### Running Locally
-1. Clone the repo:
-```bash
-git clone https://github.com/yourusername/recipe-book.git
+Running Locally
+Clone the repo:
+bash
+git clone <https://github.com/yourusername/recipe-book.git>
 cd recipe-book
 
 Install dependencies:
@@ -41,27 +42,29 @@ Create a .env file in the root of your project:
 MONGODB_URI=your-mongodb-connection-string
 PORT=3000
 
-
 Start the development server:
 
 npm run dev
 
-
-Visit: http://localhost:3000
+Visit: <http://localhost:3000>
 
 🙏 Attributions
 
 MongoDB
- - Database
+
+- Database
 
 Mongoose
- - ODM for MongoDB
+
+- ODM for MongoDB
 
 EJS
- - Templating engine
+
+- Templating engine
 
 Render
- - Hosting / Deployment
+
+- Hosting / Deployment
 
 🛠️ Technologies Used
 
